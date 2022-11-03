@@ -1,28 +1,32 @@
-import React from "react";
-import { Nav, NavLink, NavMenu }
-	from "./NavbarElements";
+import React,{Cmponents } from 'react';
 
-const Navbar = () => {
-return (
-	<>
-	<Nav>
-		<NavMenu>
-		<NavLink to="/about" activeStyle>
-			About
-		</NavLink>
-		<NavLink to="/contact" activeStyle>
-			Contact Us
-		</NavLink>
-		<NavLink to="/blogs" activeStyle>
-			Blogs
-		</NavLink>
-		<NavLink to="/sign-up" activeStyle>
-			Sign Up
-		</NavLink>
-		</NavMenu>
-	</Nav>
-	</>
-);
-};
-
-export default Navbar;
+class App extends React.Component{
+  constructor(props){
+   super(props);
+   this.state = {value: ''};  
+   this.handleChange = this.handleChange.bind(this);  
+      this.handleSubmit = this.handleSubmit.bind(this);  
+  }
+  handleChange(event) {  
+    this.setState({value: event.target.value});  
+}  
+handleSubmit(event) {  
+    alert('Your name is : ' + this.state.value);  
+    event.preventDefault();  
+}  
+  render(){
+    return(
+      <div>
+        <form onSubmit =  {this.handleSubmit}>
+          <h2>controlled forms</h2>
+          <label>Name:
+         
+          <input type="text" value={this.state.value} onChange = {this.handleChange}/>  
+              </label>
+             <button>Submit</button>
+              </form>
+          </div>
+    );
+  }
+}
+export default App;
